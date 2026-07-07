@@ -15,34 +15,15 @@ export function useStackScroll() {
       if (!n) return;
 
       const vh = window.innerHeight || 800;
-      const mobile = (window.innerWidth || 1200) < 760;
-
-      if (mobile) {
-        stackEl.style.height = "auto";
-        const vp = stackEl.querySelector<HTMLElement>("[data-stack-vp]");
-        if (vp) {
-          vp.style.position = "static";
-          vp.style.height = "auto";
-          vp.style.display = "flex";
-          vp.style.flexDirection = "column";
-          vp.style.gap = "20px";
-          vp.style.overflow = "visible";
-        }
-        cards.forEach((card) => {
-          card.style.position = "relative";
-          card.style.left = "auto";
-          card.style.top = "auto";
-          card.style.width = "100%";
-          card.style.transform = "none";
-          const inner = card.querySelector<HTMLElement>("[data-stack-inner]");
-          const dim = card.querySelector<HTMLElement>("[data-stack-dim]");
-          if (inner) {
-            inner.style.transform = "none";
-            inner.style.filter = "none";
-          }
-          if (dim) dim.style.opacity = "0";
-        });
-        return;
+      const vp = stackEl.querySelector<HTMLElement>("[data-stack-vp]");
+      stackEl.style.height = "";
+      if (vp) {
+        vp.style.position = "";
+        vp.style.height = "";
+        vp.style.display = "";
+        vp.style.flexDirection = "";
+        vp.style.gap = "";
+        vp.style.overflow = "";
       }
 
       const rect = stackEl.getBoundingClientRect();
@@ -65,6 +46,12 @@ export function useStackScroll() {
         const lift = ce * vh * 0.045;
         const scale = 1 - ce * 0.08;
 
+        card.style.position = "";
+        card.style.left = "";
+        card.style.top = "";
+        card.style.width = "";
+        card.style.willChange = "";
+        card.style.transition = "";
         card.style.transform = `translate(-50%, calc(-50% + ${(ty - lift).toFixed(1)}px))`;
         card.style.opacity = incoming < 0.02 ? "0" : "1";
 

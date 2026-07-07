@@ -5,7 +5,7 @@ import { SectionEyebrow } from "../components/SectionEyebrow";
 import { FAQS } from "../data/content";
 
 export function FaqSection() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
     <section

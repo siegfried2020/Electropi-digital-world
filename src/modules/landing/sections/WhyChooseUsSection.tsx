@@ -34,7 +34,7 @@ export function WhyChooseUsSection() {
       >
         <div
           data-reveal
-          className="relative mb-6 flex items-center justify-center px-0 py-[clamp(10px,3vw,40px)]"
+          className={`relative flex items-center justify-center px-0 py-[clamp(10px,3vw,40px)] ${isMobile ? "order-2 mb-0" : "mb-6"}`}
         >
           <div className="absolute left-[46%] top-1/2 aspect-square w-[min(420px,90%)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--dw-blue-glow),transparent_66%)]" />
           <div className="relative flex w-[min(380px,100%)] min-h-[clamp(380px,42vw,460px)] flex-col overflow-hidden rounded-[26px] bg-gradient-to-br from-[#0b8bdf] via-[var(--dw-blue)] to-[var(--dw-teal)] px-[clamp(26px,3.4vw,38px)] py-[clamp(26px,3.4vw,38px)] shadow-[0_34px_70px_-26px_var(--dw-blue)]">
@@ -102,16 +102,26 @@ export function WhyChooseUsSection() {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        <div className={`flex flex-col ${isMobile ? "order-1" : ""}`}>
           {WHY_US.map((item, index) => {
             const isActive = activeIndex === index;
             return (
               <div
                 key={item.title}
                 data-reveal
+                role="button"
+                tabIndex={0}
                 onMouseEnter={() => setActiveIndex(index)}
-                className="relative flex cursor-default items-center gap-5 border-t border-[var(--dw-border)] px-2 py-[clamp(18px,2vw,24px)] transition-[padding-left] duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                onClick={() => setActiveIndex(index)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setActiveIndex(index);
+                  }
+                }}
+                className={`relative flex items-center gap-5 border-t border-[var(--dw-border)] px-2 py-[clamp(18px,2vw,24px)] transition-[padding-left] duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobile ? "cursor-pointer" : "cursor-default"}`}
                 style={{ paddingLeft: isActive ? "18px" : "8px" }}
+                aria-pressed={isActive}
               >
                 <span
                   className="absolute bottom-[10%] left-0 top-[10%] w-0.5 origin-top rounded-sm bg-gradient-to-b from-[var(--dw-blue)] to-[var(--dw-mint)] transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"

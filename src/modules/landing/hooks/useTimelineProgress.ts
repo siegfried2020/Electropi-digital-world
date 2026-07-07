@@ -27,10 +27,17 @@ export function useTimelineProgress() {
         const on = i < lit;
 
         if (node) {
-          node.style.borderColor = on ? "var(--dw-mint)" : "var(--dw-border-strong)";
-          node.style.background = on ? "var(--dw-mint)" : "var(--dw-bg)";
-          node.style.boxShadow = on ? "0 0 14px var(--dw-mint)" : "none";
-          node.style.transform = on ? "scale(1.04)" : "scale(1)";
+          if (on) {
+            node.style.borderColor = "var(--dw-mint)";
+            node.style.background = "var(--dw-mint)";
+            node.style.boxShadow = "0 0 14px var(--dw-mint)";
+            node.style.transform = "scale(1.04)";
+          } else {
+            node.style.borderColor = "var(--dw-border-strong)";
+            node.style.background = "var(--dw-bg)";
+            node.style.boxShadow = "none";
+            node.style.transform = "scale(1)";
+          }
         }
         if (num) {
           num.style.color = on ? "var(--dw-text)" : "transparent";
@@ -61,7 +68,10 @@ export function useTimelineProgress() {
             100;
         }
 
-        if (fill) fill.style.width = `${lit > 0 ? pct : 0}%`;
+        if (fill) {
+          fill.style.width = `${lit > 0 ? pct : 0}%`;
+          fill.style.backgroundSize = `${trackRect.width}px 100%`;
+        }
         if (pulse) {
           pulse.style.left = `${pct}%`;
           pulse.style.opacity =
