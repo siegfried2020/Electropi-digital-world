@@ -33,7 +33,7 @@ function SolutionCardShell({
   return (
     <div
       data-stack
-      className="absolute left-1/2 top-1/2 w-[min(1080px,94%)] will-change-transform"
+      className="absolute left-1/2 top-1/2 w-[min(1080px,94%)] max-md:top-0 max-md:w-full max-md:max-w-full will-change-transform"
       style={{
         zIndex,
         transform:

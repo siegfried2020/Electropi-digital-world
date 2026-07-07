@@ -2,16 +2,22 @@
 
 import { SectionEyebrow } from "../components/SectionEyebrow";
 import { STEPS } from "../data/content";
+import { useLanding } from "../context/LandingProvider";
 import { useTimelineProgress } from "../hooks/useTimelineProgress";
 
 export function HowWeWorkSection() {
   const { sectionRef, timelineRef } = useTimelineProgress();
+  const { isMobile } = useLanding();
 
   return (
     <section
       id="how"
       ref={sectionRef}
-      className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,5vw,40px)] py-[clamp(72px,10vw,140px)]"
+      className={`relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,5vw,40px)] ${
+        isMobile
+          ? "pb-[clamp(72px,10vw,140px)] pt-[clamp(112px,18vw,140px)]"
+          : "py-[clamp(72px,10vw,140px)]"
+      }`}
     >
       <div data-reveal className="mb-[clamp(52px,7vw,84px)] max-w-[680px]">
         <SectionEyebrow className="mb-[18px] tracking-[0.06em]">

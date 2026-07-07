@@ -20,6 +20,7 @@ type LandingContextValue = {
   closeMenu: () => void;
   isMobile: boolean;
   isDesktop: boolean;
+  isNarrow: boolean;
 };
 
 const LandingContext = createContext<LandingContextValue | null>(null);
@@ -71,6 +72,7 @@ export function LandingProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const isMobile = width < 860;
+  const isNarrow = width < 500;
 
   const value = useMemo(
     () => ({
@@ -81,8 +83,9 @@ export function LandingProvider({ children }: { children: ReactNode }) {
       closeMenu,
       isMobile,
       isDesktop: !isMobile,
+      isNarrow,
     }),
-    [theme, toggleTheme, menuOpen, toggleMenu, closeMenu, isMobile]
+    [theme, toggleTheme, menuOpen, toggleMenu, closeMenu, isMobile, isNarrow]
   );
 
   return (

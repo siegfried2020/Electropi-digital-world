@@ -13,6 +13,7 @@
   --dw-glow: rgba(15, 240, 179, 0.16);
   --dw-blue-glow: rgba(3, 110, 217, 0.3);
   --dw-nav-bg: rgba(4, 30, 40, 0.72);
+  --dw-nav-height: 64px;
   --dw-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
 
   position: relative;

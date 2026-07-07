@@ -12,11 +12,17 @@ export function SolutionsSection() {
   return (
     <section
       id="solutions"
-      className="landing-surface relative z-[1] overflow-clip"
+      className={`landing-surface relative z-[1] ${isMobile ? "overflow-visible" : "overflow-clip"}`}
     >
       <div className="pointer-events-none absolute left-1/2 top-[-10%] h-[520px] w-[760px] -translate-x-1/2 bg-[radial-gradient(circle,var(--dw-blue-glow),transparent_62%)] opacity-70" />
 
-      <div className="relative mx-auto max-w-[1200px] px-[clamp(20px,5vw,40px)] py-[clamp(64px,9vw,120px)]">
+      <div
+        className={`relative mx-auto max-w-[1200px] px-[clamp(20px,5vw,40px)] ${
+          isMobile
+            ? "pb-32 pt-[clamp(64px,9vw,120px)]"
+            : "py-[clamp(64px,9vw,120px)]"
+        }`}
+      >
         <div data-reveal className="mx-auto max-w-[680px] text-center">
           <SectionEyebrow centered className="mb-4 justify-center">
             AI Solutions
@@ -33,7 +39,7 @@ export function SolutionsSection() {
 
         <div
           ref={stackRef}
-          className="relative mt-[clamp(32px,4vw,56px)] h-[340vh]"
+          className={`relative ${isMobile ? "mt-10 h-[460vh]" : "mt-[clamp(32px,4vw,56px)] h-[340vh]"}`}
           style={
             {
               "--stack-cols": isMobile ? "1fr" : "0.92fr 1.08fr",
@@ -42,7 +48,11 @@ export function SolutionsSection() {
         >
           <div
             data-stack-vp
-            className="sticky top-0 flex h-screen items-center justify-center overflow-hidden"
+            className={
+              isMobile
+                ? "sticky top-[var(--dw-nav-height)] flex h-[calc(100dvh-var(--dw-nav-height))] items-start justify-center overflow-visible px-1 py-5"
+                : "sticky top-0 flex h-screen items-center justify-center overflow-hidden"
+            }
           >
             <SolutionCards />
           </div>
