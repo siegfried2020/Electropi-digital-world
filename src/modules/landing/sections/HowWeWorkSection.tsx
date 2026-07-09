@@ -31,8 +31,14 @@ export function HowWeWorkSection() {
 
       <div
         ref={timelineRef}
-        className="relative [--tl-num-h:clamp(88px,11vw,124px)] [--tl-rail-h:clamp(28px,3vw,36px)]"
+        className="relative [--tl-num-h:72px] [--tl-rail-h:clamp(28px,3vw,36px)] md:[--tl-num-h:clamp(88px,11vw,124px)]"
       >
+        <div
+          className="pointer-events-none absolute bottom-0 left-[7px] top-[calc(var(--tl-num-h)+var(--tl-rail-h)/2)] z-[1] w-px bg-[var(--dw-border-strong)] md:hidden"
+        />
+        <div
+          className="pointer-events-none absolute bottom-0 left-[7px] top-[calc(var(--tl-num-h)+var(--tl-rail-h)/2)] z-[2] w-px bg-gradient-to-b from-[var(--dw-blue)] to-[var(--dw-mint)] md:hidden"
+        />
         <div
           data-tl-track
           className="pointer-events-none absolute left-0 right-0 z-[1] hidden h-px bg-[var(--dw-border-strong)] md:block"
@@ -71,16 +77,16 @@ export function HowWeWorkSection() {
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-[clamp(16px,3vw,40px)] md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 md:gap-[clamp(16px,3vw,40px)] md:grid-cols-4">
           {STEPS.map((step, index) => (
             <div
               key={step.n}
               data-reveal
               data-tl-step
-              className="relative flex flex-col"
+              className="relative flex flex-col pb-2 md:pb-0"
             >
               <div
-                className="relative flex items-start"
+                className="relative flex items-start pl-10 md:pl-0"
                 style={{ height: "var(--tl-num-h)" }}
               >
                 <span
@@ -93,19 +99,22 @@ export function HowWeWorkSection() {
               </div>
 
               <div
-                className="relative z-[2] flex items-center"
+                className="relative z-[2] flex items-center pl-10 md:pl-0"
                 style={{ height: "var(--tl-rail-h)" }}
               >
                 {index > 0 && (
                   <span
                     data-tl-node
-                    className="h-3.5 w-3.5 shrink-0 rounded-full border-[1.5px] border-[var(--dw-border-strong)] bg-[var(--dw-bg)] transition-[border-color,background,box-shadow,transform] duration-500"
+                    className="absolute left-[7px] h-3.5 w-3.5 -translate-x-1/2 shrink-0 rounded-full border-[1.5px] border-[var(--dw-border-strong)] bg-[var(--dw-bg)] transition-[border-color,background,box-shadow,transform] duration-500"
                   />
                 )}
+                <h3 className="font-heading m-0 text-[clamp(17px,1.5vw,21px)] font-semibold tracking-[-0.01em] md:hidden">
+                  {step.title}
+                </h3>
               </div>
 
-              <div className="pt-[clamp(12px,1.5vw,18px)] pr-3.5">
-                <h3 className="font-heading m-0 mb-[9px] text-[clamp(17px,1.5vw,21px)] font-semibold tracking-[-0.01em]">
+              <div className="pr-3.5 pt-2 pl-10 md:pl-0 md:pt-[clamp(12px,1.5vw,18px)]">
+                <h3 className="font-heading m-0 mb-[9px] hidden text-[clamp(17px,1.5vw,21px)] font-semibold tracking-[-0.01em] md:block">
                   {step.title}
                 </h3>
                 <p className="m-0 max-w-[30ch] text-[14.5px] leading-relaxed text-[var(--dw-muted)]">

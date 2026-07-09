@@ -7,7 +7,7 @@ export function TrustedPartnerSection() {
   return (
     <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,5vw,40px)] py-[clamp(60px,8vw,110px)]">
       <div className="flex flex-wrap items-center gap-[clamp(36px,5vw,72px)]">
-        <div data-reveal className="min-w-[350px] flex-[1_1_350px]">
+        <div data-reveal className="w-full min-w-0 flex-[1_1_350px] sm:min-w-[350px]">
           <SectionEyebrow className="mb-[18px]">Trusted AI Partner</SectionEyebrow>
 
           <h2 className="font-heading m-0 text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-[-0.02em]">
@@ -33,7 +33,7 @@ export function TrustedPartnerSection() {
 
         <div
           data-reveal
-          className="relative min-h-[440px] min-w-[350px] flex-[1_1_350px] overflow-hidden rounded-3xl border border-[var(--dw-border-strong)] bg-gradient-to-b from-[var(--dw-card)] to-[var(--dw-bg-2)] p-[clamp(22px,2.6vw,30px)] shadow-[var(--dw-shadow)]"
+          className="relative w-full min-h-[440px] min-w-0 flex-[1_1_350px] overflow-hidden rounded-3xl border border-[var(--dw-border-strong)] bg-gradient-to-b from-[var(--dw-card)] to-[var(--dw-bg-2)] p-[clamp(22px,2.6vw,30px)] shadow-[var(--dw-shadow)] sm:min-w-[350px]"
         >
           <div className="pointer-events-none absolute -right-[60px] -top-10 h-60 w-60 rounded-full bg-[radial-gradient(circle,var(--dw-blue-glow),transparent_64%)]" />
 
