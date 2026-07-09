@@ -2,6 +2,20 @@
 
 import { useEffect, useRef } from "react";
 
+function styleTimelineNode(node: HTMLElement, on: boolean) {
+  if (on) {
+    node.style.borderColor = "var(--dw-mint)";
+    node.style.background = "var(--dw-mint)";
+    node.style.boxShadow = "0 0 14px var(--dw-mint)";
+    node.style.transform = "scale(1.04)";
+  } else {
+    node.style.borderColor = "var(--dw-border-strong)";
+    node.style.background = "var(--dw-bg)";
+    node.style.boxShadow = "none";
+    node.style.transform = "scale(1)";
+  }
+}
+
 export function useTimelineProgress() {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -27,17 +41,7 @@ export function useTimelineProgress() {
         const on = i < lit;
 
         if (node) {
-          if (on) {
-            node.style.borderColor = "var(--dw-mint)";
-            node.style.background = "var(--dw-mint)";
-            node.style.boxShadow = "0 0 14px var(--dw-mint)";
-            node.style.transform = "scale(1.04)";
-          } else {
-            node.style.borderColor = "var(--dw-border-strong)";
-            node.style.background = "var(--dw-bg)";
-            node.style.boxShadow = "none";
-            node.style.transform = "scale(1)";
-          }
+          styleTimelineNode(node, on);
         }
         if (num) {
           num.style.color = on ? "var(--dw-text)" : "transparent";
@@ -51,17 +55,25 @@ export function useTimelineProgress() {
       const fill = timelineEl.querySelector<HTMLElement>("[data-tl-fill]");
       const pulse = timelineEl.querySelector<HTMLElement>("[data-tl-pulse]");
       const track = timelineEl.querySelector<HTMLElement>("[data-tl-track]");
+      const endNode = timelineEl.querySelector<HTMLElement>("[data-tl-end-node]");
 
       if (steps.length && track) {
         const trackRect = track.getBoundingClientRect();
-        const frontier = Math.max(0, Math.min(steps.length - 1, lit - 1));
-        const frontierNode = steps[frontier]?.querySelector<HTMLElement>(
-          "[data-tl-node]"
+        const nodes = Array.from(
+          timelineEl.querySelectorAll<HTMLElement>(
+            "[data-tl-node]:not([data-tl-end-node])"
+          )
         );
+        const complete = lit >= n;
+        // Nodes start at step 02, so map lit steps → farthest visible node
+        const litNodes = Math.max(0, lit - 1);
+        const frontier = Math.max(0, Math.min(nodes.length - 1, litNodes - 1));
         let pct = 0;
 
-        if (lit > 0 && frontierNode) {
-          const nodeRect = frontierNode.getBoundingClientRect();
+        if (complete) {
+          pct = 100;
+        } else if (litNodes > 0 && nodes[frontier]) {
+          const nodeRect = nodes[frontier].getBoundingClientRect();
           pct =
             ((nodeRect.left + nodeRect.width / 2 - trackRect.left) /
               trackRect.width) *
@@ -69,14 +81,21 @@ export function useTimelineProgress() {
         }
 
         if (fill) {
-          fill.style.width = `${lit > 0 ? pct : 0}%`;
+          fill.style.width = `${pct}%`;
           fill.style.backgroundSize = `${trackRect.width}px 100%`;
         }
         if (pulse) {
           pulse.style.left = `${pct}%`;
           pulse.style.opacity =
-            lit > 0 && lit < steps.length ? "1" : "0";
+            !complete && litNodes > 0 && litNodes < nodes.length ? "1" : "0";
         }
+
+        if (endNode) {
+          const lastStepIndex = steps.length - 1;
+          styleTimelineNode(endNode, lastStepIndex < lit || pct >= 100);
+        }
+      } else if (endNode) {
+        styleTimelineNode(endNode, false);
       }
     };
 

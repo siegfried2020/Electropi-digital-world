@@ -57,9 +57,22 @@ export function HowWeWorkSection() {
             boxShadow: "0 0 14px var(--dw-mint)",
           }}
         />
+        <div
+          className="pointer-events-none absolute right-0 z-[4] hidden items-center md:flex"
+          style={{
+            top: "var(--tl-num-h)",
+            height: "var(--tl-rail-h)",
+          }}
+        >
+          <span
+            data-tl-node
+            data-tl-end-node
+            className="h-3.5 w-3.5 shrink-0 rounded-full border-[1.5px] border-[var(--dw-border-strong)] bg-[var(--dw-bg)] transition-[border-color,background,box-shadow,transform] duration-500"
+          />
+        </div>
 
         <div className="grid grid-cols-1 gap-[clamp(16px,3vw,40px)] md:grid-cols-4">
-          {STEPS.map((step) => (
+          {STEPS.map((step, index) => (
             <div
               key={step.n}
               data-reveal
@@ -83,10 +96,12 @@ export function HowWeWorkSection() {
                 className="relative z-[2] flex items-center"
                 style={{ height: "var(--tl-rail-h)" }}
               >
-                <span
-                  data-tl-node
-                  className="h-3.5 w-3.5 shrink-0 rounded-full border-[1.5px] border-[var(--dw-border-strong)] bg-[var(--dw-bg)] transition-[border-color,background,box-shadow,transform] duration-500"
-                />
+                {index > 0 && (
+                  <span
+                    data-tl-node
+                    className="h-3.5 w-3.5 shrink-0 rounded-full border-[1.5px] border-[var(--dw-border-strong)] bg-[var(--dw-bg)] transition-[border-color,background,box-shadow,transform] duration-500"
+                  />
+                )}
               </div>
 
               <div className="pt-[clamp(12px,1.5vw,18px)] pr-3.5">

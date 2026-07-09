@@ -1,3 +1,7 @@
+html {
+  scroll-padding-top: var(--dw-nav-height, 64px);
+}
+
 .landing {
   --dw-bg: #041e28;
   --dw-bg-2: #062a37;

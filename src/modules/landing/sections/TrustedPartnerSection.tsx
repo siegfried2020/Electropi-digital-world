@@ -7,7 +7,7 @@ export function TrustedPartnerSection() {
   return (
     <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,5vw,40px)] py-[clamp(60px,8vw,110px)]">
       <div className="flex flex-wrap items-center gap-[clamp(36px,5vw,72px)]">
-        <div data-reveal className="min-w-[380px] flex-[1_1_380px]">
+        <div data-reveal className="min-w-[350px] flex-[1_1_350px]">
           <SectionEyebrow className="mb-[18px]">Trusted AI Partner</SectionEyebrow>
 
           <h2 className="font-heading m-0 text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-[-0.02em]">
@@ -33,12 +33,12 @@ export function TrustedPartnerSection() {
 
         <div
           data-reveal
-          className="relative min-h-[440px] min-w-[400px] flex-[1_1_400px] overflow-hidden rounded-3xl border border-[var(--dw-border-strong)] bg-gradient-to-b from-[var(--dw-card)] to-[var(--dw-bg-2)] p-[clamp(22px,2.6vw,30px)] shadow-[var(--dw-shadow)]"
+          className="relative min-h-[440px] min-w-[350px] flex-[1_1_350px] overflow-hidden rounded-3xl border border-[var(--dw-border-strong)] bg-gradient-to-b from-[var(--dw-card)] to-[var(--dw-bg-2)] p-[clamp(22px,2.6vw,30px)] shadow-[var(--dw-shadow)]"
         >
           <div className="pointer-events-none absolute -right-[60px] -top-10 h-60 w-60 rounded-full bg-[radial-gradient(circle,var(--dw-blue-glow),transparent_64%)]" />
 
-          <div className="relative mb-[clamp(18px,2.4vw,26px)] flex items-center justify-between gap-3.5">
-            <div className="flex items-center gap-[11px]">
+          <div className="relative mb-[clamp(18px,2.4vw,26px)] flex items-start justify-between gap-3.5">
+            <div className="flex min-w-0 flex-col gap-2.5">
               <Logo size="md" />
               <div className="leading-[1.25]">
                 <div className="font-heading text-[15px] font-bold">
@@ -49,7 +49,7 @@ export function TrustedPartnerSection() {
                 </div>
               </div>
             </div>
-            <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--dw-border-strong)] px-[11px] py-[5px] text-[10.5px] font-semibold text-[var(--dw-muted)]">
+            <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--dw-border-strong)] px-[11px] py-[5px] text-[10.5px] font-semibold text-[var(--dw-muted)]">
               <span
                 className="h-1.5 w-1.5 rounded-full bg-[var(--dw-mint)] shadow-[0_0_8px_var(--dw-mint)]"
                 style={{ animation: "dw-blink 1.8s ease-in-out infinite" }}
@@ -68,10 +68,10 @@ export function TrustedPartnerSection() {
             {ECOSYSTEM.map((item) => (
               <div
                 key={item.name}
-                className="group relative z-[2] flex items-center gap-[15px] rounded-[14px] border border-[var(--dw-border)] bg-[var(--dw-card-2)] px-4 py-[clamp(12px,1.4vw,15px)] transition-[transform,border-color,background] duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:translate-x-1.5 hover:border-[var(--dw-mint)]"
+                className="group relative z-[2] flex items-start gap-[15px] rounded-[14px] border border-[var(--dw-border)] bg-[var(--dw-card-2)] px-4 py-[clamp(12px,1.4vw,15px)] transition-[transform,border-color,background] duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:translate-x-1.5 hover:border-[var(--dw-mint)]"
               >
                 <span
-                  className="h-3 w-3 shrink-0 rounded border-2 border-[var(--dw-card)] outline outline-2 outline-[var(--dw-card-2)]"
+                  className="mt-1.5 h-3 w-3 shrink-0 rounded border-2 border-[var(--dw-card)] outline outline-2 outline-[var(--dw-card-2)]"
                   style={{
                     background: item.accent,
                     boxShadow: `0 0 10px -1px ${item.accent}`,
@@ -84,10 +84,10 @@ export function TrustedPartnerSection() {
                   <div className="mt-px text-[11.5px] text-[var(--dw-muted)]">
                     {item.role}
                   </div>
+                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-[10.5px] font-semibold text-[var(--dw-mint)]">
+                    connected
+                  </span>
                 </div>
-                <span className="inline-flex shrink-0 items-center gap-1.5 text-[10.5px] font-semibold text-[var(--dw-mint)]">
-                  connected
-                </span>
               </div>
             ))}
           </div>

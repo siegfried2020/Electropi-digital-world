@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "../components/Logo";
 import {
   FOOTER_COMPANY_LINKS,
   FOOTER_RESOURCE_LINKS,
 } from "../data/content";
+import { onHashLinkClick } from "../utils/smoothScroll";
 
 const SOCIAL_LINKS = ["in", "X", "f"] as const;
 
@@ -61,6 +64,7 @@ function FooterLinkGroup({
         <Link
           key={link.href}
           href={link.href}
+          onClick={(e) => onHashLinkClick(e, link.href)}
           className="text-[14.5px] text-[var(--dw-text)] no-underline transition-colors hover:text-[var(--dw-mint)]"
         >
           {link.label}
