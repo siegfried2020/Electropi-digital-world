@@ -5,35 +5,33 @@ type LogoProps = {
   size?: "sm" | "md";
 };
 
+/** Matches EraCoda_Gradient.html [data-logo-nav] crop of the square wordmark PNG. */
+const NAV_LOGO = {
+  width: 170.16,
+  height: 26,
+  backgroundSize: "278.02px 278.02px",
+  backgroundPosition: "-49.94px -126.65px",
+} as const;
+
 export function Logo({ className, size = "md" }: LogoProps) {
-  const iconSize = size === "sm" ? "w-[30px] h-[30px]" : "w-[34px] h-[34px]";
-  const dotSize = size === "sm" ? "w-2.5 h-2.5" : "w-[11px] h-[11px]";
-  const textSize = size === "sm" ? "text-[21px]" : "text-[15px]";
+  const scale = size === "sm" ? 0.82 : 1;
+  const width = NAV_LOGO.width * scale;
+  const height = NAV_LOGO.height * scale;
+  const bgScale = 278.02 * scale;
 
   return (
-    <span className={cn("inline-flex items-center gap-[11px]", className)}>
-      <span
-        className={cn(
-          "relative inline-flex items-center justify-center",
-          iconSize
-        )}
-      >
-        <span className="absolute inset-0 rounded-full border-[2.5px] border-[var(--dw-blue)]" />
-        <span
-          className={cn(
-            "absolute rounded-full bg-[var(--dw-mint)] shadow-[0_0_10px_var(--dw-mint)]",
-            dotSize
-          )}
-        />
-      </span>
-      <span
-        className={cn(
-          "font-heading font-bold tracking-[-0.02em]",
-          textSize
-        )}
-      >
-        Digital World
-      </span>
-    </span>
+    <span
+      role="img"
+      aria-label="Eracoda"
+      className={cn("dw-logo inline-block shrink-0", className)}
+      style={{
+        width,
+        height,
+        backgroundImage: "url(/eracoda-logo.png)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: `${bgScale}px ${bgScale}px`,
+        backgroundPosition: `${-49.94 * scale}px ${-126.65 * scale}px`,
+      }}
+    />
   );
 }

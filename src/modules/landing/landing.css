@@ -60,6 +60,10 @@ html {
   --dw-eyebrow: #067a60;
 }
 
+.landing[data-theme="light"] .dw-logo {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .landing ::selection {
   background: var(--dw-blue);
   color: #fff;
