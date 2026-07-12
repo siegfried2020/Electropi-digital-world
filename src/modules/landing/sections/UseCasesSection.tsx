@@ -5,6 +5,7 @@ import { useState } from "react";
 import { SectionEyebrow } from "../components/SectionEyebrow";
 import { SOLUTIONS } from "../data/content";
 import { useLanding } from "../context/LandingProvider";
+import { onHashLinkClick } from "../utils/smoothScroll";
 
 export function UseCasesSection() {
   const { isMobile } = useLanding();
@@ -36,6 +37,7 @@ export function UseCasesSection() {
               <Link
                 key={solution.num}
                 href="#cta"
+                onClick={(e) => onHashLinkClick(e, "#cta")}
                 onMouseEnter={() => setActiveIndex(index)}
                 onMouseLeave={() => setActiveIndex(null)}
                 className="relative block border-t border-[var(--dw-border)] py-[clamp(34px,4.6vw,60px)] text-inherit no-underline transition-[padding-left] duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)]"

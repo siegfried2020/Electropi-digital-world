@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useGlobeCanvas } from "../hooks/useGlobeCanvas";
+import { onHashLinkClick } from "../utils/smoothScroll";
 
 export function HeroSection() {
   const canvasRef = useGlobeCanvas();
@@ -55,10 +56,18 @@ export function HeroSection() {
           data-reveal
           className="mt-10 flex flex-wrap justify-center gap-3.5"
         >
-          <Link href="#cta" className="landing-btn-primary">
+          <Link
+            href="#cta"
+            onClick={(e) => onHashLinkClick(e, "#cta")}
+            className="landing-btn-primary"
+          >
             Start Your AI Project <span className="text-lg leading-none">→</span>
           </Link>
-          <Link href="#solutions" className="landing-btn-secondary">
+          <Link
+            href="#solutions"
+            onClick={(e) => onHashLinkClick(e, "#solutions")}
+            className="landing-btn-secondary"
+          >
             Explore Solutions
           </Link>
         </div>

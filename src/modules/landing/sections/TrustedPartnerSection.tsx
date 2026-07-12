@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "../components/Logo";
 import { SectionEyebrow } from "../components/SectionEyebrow";
 import { ECOSYSTEM } from "../data/content";
+import { onHashLinkClick } from "../utils/smoothScroll";
 
 export function TrustedPartnerSection() {
   return (
@@ -26,7 +29,11 @@ export function TrustedPartnerSection() {
             as a single intelligent system.
           </p>
 
-          <Link href="#solutions" className="landing-btn-outline px-6 py-3.5 text-[15px]">
+          <Link
+            href="#solutions"
+            onClick={(e) => onHashLinkClick(e, "#solutions")}
+            className="landing-btn-outline px-6 py-3.5 text-[15px]"
+          >
             Learn More <span className="text-[17px]">→</span>
           </Link>
         </div>

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { onHashLinkClick } from "../utils/smoothScroll";
 
 export function CtaSection() {
   return (
@@ -33,6 +36,7 @@ export function CtaSection() {
         </p>
         <Link
           href="#top"
+          onClick={(e) => onHashLinkClick(e, "#top")}
           className="relative mt-8 inline-flex items-center gap-[9px] rounded-full bg-white px-8 py-4 text-base font-bold text-[#041e28] no-underline shadow-[0_18px_40px_-14px_rgba(0,0,0,0.5)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,0.55)]"
         >
           Book a Consultation <span className="text-lg">→</span>

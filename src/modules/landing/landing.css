@@ -19,6 +19,12 @@ html {
   --dw-nav-bg: rgba(4, 30, 40, 0.72);
   --dw-nav-height: 64px;
   --dw-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+  --dw-stack-dim: rgba(2, 14, 20, 0.72);
+  --dw-panel: #0a2c3a;
+  --dw-panel-2: #051a24;
+  --dw-panel-3: #123a4d;
+  --dw-check-text: #d6e6ea;
+  --dw-eyebrow: #0ff0b3;
 
   position: relative;
   width: 100%;
@@ -46,6 +52,12 @@ html {
   --dw-blue-glow: rgba(3, 110, 217, 0.2);
   --dw-nav-bg: rgba(255, 255, 255, 0.8);
   --dw-shadow: 0 24px 60px -28px rgba(4, 30, 40, 0.22);
+  --dw-stack-dim: rgba(238, 245, 249, 0.78);
+  --dw-panel: #ffffff;
+  --dw-panel-2: #f0f6f9;
+  --dw-panel-3: #e4eef4;
+  --dw-check-text: #2f4a55;
+  --dw-eyebrow: #067a60;
 }
 
 .landing ::selection {
@@ -143,21 +155,21 @@ html {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--dw-mint);
+  color: var(--dw-eyebrow);
 }
 
 .landing-eyebrow::before {
   content: "";
   width: 22px;
   height: 1px;
-  background: var(--dw-mint);
+  background: var(--dw-eyebrow);
 }
 
 .landing-eyebrow--center::after {
   content: "";
   width: 22px;
   height: 1px;
-  background: var(--dw-mint);
+  background: var(--dw-eyebrow);
 }
 
 .landing-btn-primary {
@@ -231,7 +243,7 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  color: #d6e6ea;
+  color: var(--dw-check-text);
   font-size: 14.5px;
 }
 
